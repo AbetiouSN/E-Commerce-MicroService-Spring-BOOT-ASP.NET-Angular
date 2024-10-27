@@ -1,0 +1,62 @@
+<!-- ajouter-product.component.html -->
+<h2 class="text-2xl font-bold mb-6">Ajouter un Nouveau Produit</h2>
+<form [formGroup]="pForm" (ngSubmit)="onSubmit()" class="space-y-4">
+
+  <div>
+    <label for="nom" class="block text-sm font-medium text-gray-700">Nom du Produit</label>
+    <input
+      id="nom"
+      formControlName="nom"
+      type="text"
+      placeholder="Nom du produit"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+    <div *ngIf="pForm.get('nom')?.invalid && pForm.get('nom')?.touched" class="text-red-500 text-sm">
+      <small>Le nom est requis.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+    <textarea
+      id="description"
+      formControlName="description"
+      placeholder="Description du produit"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
+    <div *ngIf="pForm.get('description')?.invalid && pForm.get('description')?.touched" class="text-red-500 text-sm">
+      <small>La description est requise.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>
+    <input
+      id="quantity"
+      formControlName="quantity"
+      type="number"
+      placeholder="Quantité"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+    <div *ngIf="pForm.get('quantity')?.invalid && pForm.get('quantity')?.touched" class="text-red-500 text-sm">
+      <small>La quantité est requise.</small>
+    </div>
+  </div>
+
+  <div>
+    <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>
+    <input
+      id="prix"
+      formControlName="prix"
+      type="number"
+      placeholder="Prix"
+      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
+    <div *ngIf="pForm.get('prix')?.invalid && pForm.get('prix')?.touched" class="text-red-500 text-sm">
+      <small>Le prix est requis.</small>
+    </div>
+  </div>
+
+  <button
+    type="submit"
+    [disabled]="pForm.invalid"
+    class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition duration-300">
+    Enregistrer le Produit
+  </button>
+</form>

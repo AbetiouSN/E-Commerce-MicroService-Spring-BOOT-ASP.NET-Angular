@@ -1,0 +1,35 @@
+<h2 class="text-2xl font-bold mb-4">Ajouter des Images au Produit</h2>
+
+<div class="space-y-4">
+  <div *ngFor="let section of sections; let i = index" class="flex flex-col">
+    <label class="font-semibold">Image {{ i + 1 }}</label>
+    <input
+      type="file"
+      (change)="onImageUpload($event, i)"
+      accept="image/*"
+      class="border border-gray-300 rounded p-2 mb-2"
+    />
+    <div *ngIf="section.source" class="mt-2">
+      <img
+        [src]="getImage(section.source)"
+        alt="Preview"
+        class="w-24 h-24 object-cover border border-gray-200 rounded"
+      />
+    </div>
+  </div>
+</div>
+
+<div class="mt-4">
+  <button
+    (click)="submitAndAddImage()"
+    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
+  >
+    Ajouter une Autre Image
+  </button>
+  <button
+    (click)="onSubmit()"
+    class="ml-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200"
+  >
+    Soumettre les Images
+  </button>
+</div>
