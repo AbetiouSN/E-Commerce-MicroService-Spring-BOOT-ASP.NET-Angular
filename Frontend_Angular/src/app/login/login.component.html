@@ -1,0 +1,56 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-200 via-gray-300 to-gray-500 p-6">
+  <div class="bg-white shadow-xl rounded-3xl p-10 w-full max-w-md transition-transform transform hover:scale-105 duration-300 ease-in-out">
+    <h2 class="text-3xl font-bold text-center mb-8 text-gray-800">Se Connecter</h2>
+    <form [formGroup]="loginForm" (ngSubmit)="onSubmit()" class="space-y-6">
+
+      <!-- Email Field -->
+      <div>
+        <label class="block text-gray-600 text-sm font-medium mb-2" for="email">Email</label>
+        <input
+          type="email"
+          id="email"
+          formControlName="email"
+          placeholder="Entrez votre email"
+          class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <div *ngIf="loginForm.get('email')?.invalid && loginForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+          Veuillez entrer un email valide.
+        </div>
+      </div>
+
+      <!-- Password Field -->
+      <div>
+        <label class="block text-gray-600 text-sm font-medium mb-2" for="password">Mot de passe</label>
+        <input
+          type="password"
+          id="password"
+          formControlName="password"
+          placeholder="Entrez votre mot de passe"
+          class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <div *ngIf="loginForm.get('password')?.invalid && loginForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          Veuillez entrer un mot de passe valide.
+        </div>
+      </div>
+
+      <!-- Submit Button -->
+      <button
+        type="submit"
+        class="w-full py-3 text-white bg-blue-700 hover:bg-blue-800 rounded-lg font-medium focus:outline-none focus:ring-4 focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+      >
+        Se Connecter
+      </button>
+
+      <!-- Additional Links -->
+      <div class="flex justify-between items-center mt-6 text-sm text-gray-600">
+        <button routerLink="/forgot-password" class="text-blue-500 hover:underline">
+          Mot de passe oublié ?
+        </button>
+        <button routerLink="/register" class="text-blue-500 hover:underline">
+          S'inscrire
+        </button>
+      </div>
+
+    </form>
+  </div>
+</div>

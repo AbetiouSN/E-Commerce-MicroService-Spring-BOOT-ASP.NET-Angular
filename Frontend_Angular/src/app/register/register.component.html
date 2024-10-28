@@ -1,0 +1,96 @@
+<div class="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-200 via-gray-300 to-gray-500 p-6">
+  <div class="bg-white shadow-2xl rounded-3xl p-10 w-full max-w-lg transition-transform transform hover:scale-105 duration-300 ease-in-out">
+    <h2 class="text-3xl font-extrabold text-center mb-10 text-gray-800">Inscription</h2>
+    <form [formGroup]="signupForm" (ngSubmit)="onSubmit()" class="space-y-8">
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-600 text-sm font-medium mb-2" for="prenom">Prénom</label>
+          <input
+            placeholder="Prénom"
+            type="text"
+            id="prenom"
+            formControlName="prenom"
+            class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div *ngIf="signupForm.get('prenom')?.invalid && signupForm.get('prenom')?.touched" class="text-red-500 text-sm mt-1">
+            Veuillez entrer un prénom.
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-600 text-sm font-medium mb-2" for="nom">Nom</label>
+          <input
+            placeholder="Nom"
+            type="text"
+            id="nom"
+            formControlName="nom"
+            class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div *ngIf="signupForm.get('nom')?.invalid && signupForm.get('nom')?.touched" class="text-red-500 text-sm mt-1">
+            Veuillez entrer un nom.
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <div>
+          <label class="block text-gray-600 text-sm font-medium mb-2" for="cne">CNE</label>
+          <input
+            placeholder="CNE"
+            type="text"
+            id="cne"
+            formControlName="cne"
+            class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div *ngIf="signupForm.get('cne')?.invalid && signupForm.get('cne')?.touched" class="text-red-500 text-sm mt-1">
+            Veuillez entrer un CNE.
+          </div>
+        </div>
+        <div>
+          <label class="block text-gray-600 text-sm font-medium mb-2" for="email">Email</label>
+          <input
+            placeholder="Email"
+            type="email"
+            id="email"
+            formControlName="email"
+            class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+          />
+          <div *ngIf="signupForm.get('email')?.invalid && signupForm.get('email')?.touched" class="text-red-500 text-sm mt-1">
+            Veuillez entrer un email valide.
+          </div>
+        </div>
+      </div>
+
+      <div>
+        <label class="block text-gray-600 text-sm font-medium mb-2" for="password">Mot de passe</label>
+        <input
+          placeholder="Mot de passe"
+          type="password"
+          id="password"
+          formControlName="password"
+          class="w-full px-5 py-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-400"
+        />
+        <div *ngIf="signupForm.get('password')?.invalid && signupForm.get('password')?.touched" class="text-red-500 text-sm mt-1">
+          Veuillez entrer un mot de passe valide.
+        </div>
+      </div>
+
+
+      <div *ngIf="formInvalid" class="text-red-500 text-center text-sm">
+        Veuillez remplir tous les champs correctement.
+      </div>
+
+      <div class="flex justify-between items-center mt-8">
+        <div>
+          <span class="text-gray-600 text-sm">Déjà inscrit ?</span>
+          <button routerLink="/login" class="text-blue-500 hover:underline ml-1">Sign in</button>
+        </div>
+        <div class="flex space-x-4">
+          <button type="reset" class="px-6 py-2 text-gray-700 bg-gray-300 rounded-lg hover:bg-gray-400">Réinitialiser</button>
+          <button type="submit" class="px-6 py-2 text-white bg-blue-600 rounded-lg hover:bg-blue-700">Soumettre</button>
+        </div>
+      </div>
+
+    </form>
+  </div>
+</div>

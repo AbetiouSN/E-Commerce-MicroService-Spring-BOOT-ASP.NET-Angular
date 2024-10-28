@@ -1,12 +1,11 @@
 package com.springsecurity.springsecurity.auth;
 
+import com.springsecurity.springsecurity.user.Customer;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
+@CrossOrigin(origins ="http://localhost:4200")
 @RestController
 @RequestMapping("/api/v1/auth")
 @RequiredArgsConstructor
@@ -19,6 +18,12 @@ private  final AuthenticationSercvice authenticationSercvice;
             @RequestBody RegisterRequest request
     ){
         return ResponseEntity.ok(authenticationSercvice.register(request));
+    }
+
+    @PostMapping("/register-client")
+    public ResponseEntity<AuthenticationResponse> registerClient(@RequestBody Customer request) {
+        System.out.println("Received request: " + request); // Pour vérifier la requête
+        return ResponseEntity.ok(authenticationSercvice.registerClient(request));
     }
 
     @PostMapping("/authenticate")

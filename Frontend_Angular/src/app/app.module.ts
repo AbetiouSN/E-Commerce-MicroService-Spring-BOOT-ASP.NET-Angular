@@ -7,14 +7,24 @@ import { ProductComponent } from './product/product.component'; // Assure-toi qu
 import { ProductService } from './Services/product.service';
 import { AjouterProductComponent } from './ajouter-product/ajouter-product.component';
 import { AjouterImageComponent } from './ajouter-image/ajouter-image.component';
-import {ReactiveFormsModule} from "@angular/forms"; // Assure-toi que le chemin est correct
+import {ReactiveFormsModule} from "@angular/forms";
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { HomeComponent } from './home/home.component';
+import { NavbarUserComponent } from './navbar-user/navbar-user.component';
+import { FooterComponent } from './footer/footer.component'; // Assure-toi que le chemin est correct
 
 @NgModule({
   declarations: [
     AppComponent,
     ProductComponent,
     AjouterProductComponent,
-    AjouterImageComponent
+    AjouterImageComponent,
+    RegisterComponent,
+    LoginComponent,
+    HomeComponent,
+    NavbarUserComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,

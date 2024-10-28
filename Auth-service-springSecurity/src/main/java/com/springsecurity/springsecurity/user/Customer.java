@@ -10,7 +10,7 @@ public class Customer {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String CNE;
+    private String cne;
     private String nom;
     private String prenom;
 
