@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using ProductManagemntService.DBContext;
+using Steeltoe.Discovery.Client;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,7 +28,7 @@ builder.Services.AddDbContext<ProductDbContext>(options =>
 // Configure logging
 builder.Logging.ClearProviders();
 builder.Logging.AddConsole();
-
+builder.Services.AddDiscoveryClient(builder.Configuration); 
 var app = builder.Build();
 
 // Configure the HTTP request pipeline
@@ -44,5 +45,6 @@ app.UseCors("AllowAllOrigins");
 
 app.UseAuthorization();
 app.MapControllers();
+
 
 app.Run();
