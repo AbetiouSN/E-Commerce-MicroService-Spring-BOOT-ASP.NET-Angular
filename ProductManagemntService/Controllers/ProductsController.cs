@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ProductManagemntService.DBContext;
 using ProductManagemntService.Models;
@@ -17,7 +18,7 @@ namespace ProductManagemntService.Controllers
         {
             _context = context;
         }
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(ProductCreateDto productCreateDto)
         {
@@ -44,7 +45,7 @@ namespace ProductManagemntService.Controllers
         }
 
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {

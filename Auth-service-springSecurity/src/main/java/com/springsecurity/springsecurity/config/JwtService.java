@@ -27,18 +27,47 @@ public class JwtService {
         return claimsResolver.apply(claims);
     }
 
-//    public String generateToken(UserDetails userDetails){
-//        return generateToken(new HashMap<>(), userDetails);
-//    }
+
     //hadi d rihab
-public String generateToken(UserDetails userDetails){
-    return Jwts.builder()
-            .setClaims(Map.of("role",userDetails.getAuthorities()))
-            .setSubject(userDetails.getUsername())
-            .setIssuedAt(new Date(System.currentTimeMillis()))
-            .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 *60*10))
-            .signWith(getSignInKey(),SignatureAlgorithm.HS256).compact();
-}
+//public String generateToken(UserDetails userDetails){
+//    return Jwts.builder()
+//            .setClaims(Map.of("role",userDetails.getAuthorities()))
+//            .setSubject(userDetails.getUsername())
+//            .setIssuedAt(new Date(System.currentTimeMillis()))
+//            .setExpiration(new Date(System.currentTimeMillis()+ 1000 * 60 *60*10))
+//            .signWith(getSignInKey(),SignatureAlgorithm.HS256).compact();
+//}
+
+//    public String generateToken(UserDetails userDetails) {
+//        return Jwts.builder()
+//                .setIssuer("http://localhost:8090")
+//                .setClaims(Map.of("role", userDetails.getAuthorities(), "audience", "product-service")) // Ajout de l'audience ici
+//                .setSubject(userDetails.getUsername())
+//                .setIssuedAt(new Date(System.currentTimeMillis()))
+//                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
+//                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+//                .compact();
+//    }
+
+    public String generateToken(UserDetails userDetails) {
+        // Extract roles from UserDetails and convert to a list of strings
+        List<String> roles = userDetails.getAuthorities().stream()
+                .map(GrantedAuthority::getAuthority)
+                .collect(Collectors.toList());
+
+        return Jwts.builder()
+                .setIssuer("http://localhost:8090")
+                .setAudience("product-service") // Explicitly set the audience here
+                .claim("roles", roles) // Set roles as a separate claim
+                .setSubject(userDetails.getUsername())
+                .setIssuedAt(new Date(System.currentTimeMillis()))
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
+                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+                .compact();
+    }
+
+
+
 
     public String generateToken(Map<String,Object> extraClaims, UserDetails userDetails){
         return Jwts.builder()
@@ -51,40 +80,6 @@ public String generateToken(UserDetails userDetails){
     }
 
 
-//    public String generateToken(
-//            Map<String , Object> extraClaims,
-//            UserDetails userDetails
-//    ){
-//        return Jwts
-//                .builder()
-//                .setClaims(extraClaims)
-//                .setSubject(userDetails.getUsername())
-//                .setIssuedAt(new Date(System.currentTimeMillis()))
-//                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-//                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-//                .compact();
-//    }
-
-
-
-//public String generateToken(UserDetails userDetails) {
-//    // Retrieve user roles from UserDetails
-//    List<String> roles = userDetails.getAuthorities().stream()
-//            .map(GrantedAuthority::getAuthority)
-//            .collect(Collectors.toList());
-//
-//    // Create extra claims and add roles
-//    Map<String, Object> extraClaims = new HashMap<>();
-//    extraClaims.put("roles", roles);
-//
-//    return Jwts.builder()
-//            .setClaims(extraClaims)
-//            .setSubject(userDetails.getUsername())
-//            .setIssuedAt(new Date(System.currentTimeMillis()))
-//            .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 24))
-//            .signWith(getSignInKey(), SignatureAlgorithm.HS256)
-//            .compact();
-//}
 
 
     public boolean isTokenValid(String token , UserDetails userDetails){
