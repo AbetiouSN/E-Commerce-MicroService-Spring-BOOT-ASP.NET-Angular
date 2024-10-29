@@ -10,10 +10,14 @@
         <option value="$PROJECT_DIR$/services/costomer-service/pom.xml" />
         <option value="$PROJECT_DIR$/SERVICE-REGISTRER/pom.xml" />
         <option value="$PROJECT_DIR$/Auth-service-springSecurity/pom.xml" />
+        <option value="$PROJECT_DIR$/API-GATEWAY/pom.xml" />
       </list>
     </option>
   </component>
   <component name="ProjectRootManager" version="2" languageLevel="JDK_X" default="true" project-jdk-name="jbr-17" project-jdk-type="JavaSDK">
     <output url="file://$PROJECT_DIR$/out" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="jpab" />
   </component>
 </project>

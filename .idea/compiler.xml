@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="SERVICE-REGISTRER" />
         <module name="springsecurity" />
+        <module name="API-GATEWAY" />
       </profile>
     </annotationProcessing>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
+      <module name="API-GATEWAY" options="-parameters" />
       <module name="SERVICE-REGISTRER" options="-parameters" />
       <module name="springsecurity" options="-parameters" />
     </option>
