@@ -12,7 +12,7 @@ export class ProductComponent {
   constructor(private productService: ProductService) {}
 
   getImage(base64String: string): string {
-    return `data:image/jpeg;base64,${base64String}`; // Adjust this if your images are in a different format
+    return `${base64String}`; // Adjust this if your images are in a different format
   }
 
   ngOnInit(): void {

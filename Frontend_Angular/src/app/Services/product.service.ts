@@ -19,10 +19,12 @@ export class ProductService {
 
 
   addProduct(product: Produit): Observable<Produit> {
-    return this.http.post<Produit>(`${this.apiUrl}`, product);
+    const headers = this.authService.getHeaders();
+    return this.http.post<Produit>(`${this.apiUrl}`, product, { headers });
   }
   uploadImages(productId: number, images: string[]): Observable<any> {
-    return this.http.post(`${this.apiUrl}/${productId}/images`, images); // No need to wrap in an object
+    const headers = this.authService.getHeaders();
+    return this.http.post(`${this.apiUrl}/${productId}/images`, images,{ headers }); // No need to wrap in an object
   }
 
 
