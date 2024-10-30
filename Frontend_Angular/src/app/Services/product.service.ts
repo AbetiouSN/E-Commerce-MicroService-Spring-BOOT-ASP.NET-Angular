@@ -1,7 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable } from 'rxjs';
-import { Produit } from '../Models/product.model'; // Adjust the import according to your project structure
+import { Produit } from '../Models/product.model';
+import {AuthService} from "./auth.service"; // Adjust the import according to your project structure
 
 @Injectable({
   providedIn: 'root',
@@ -9,11 +10,13 @@ import { Produit } from '../Models/product.model'; // Adjust the import accordin
 export class ProductService {
   private apiUrl = 'http://localhost:5281/api/Products'; // Ensure this matches your backend API
 
-  constructor(private http: HttpClient) {}
+  constructor(private http: HttpClient,private authService: AuthService) {}
 
   getProducts(): Observable<Produit[]> {
-    return this.http.get<Produit[]>(this.apiUrl);
+    const headers = this.authService.getHeaders();
+    return this.http.get<Produit[]>(this.apiUrl, { headers });
   }
+
 
   addProduct(product: Produit): Observable<Produit> {
     return this.http.post<Produit>(`${this.apiUrl}`, product);

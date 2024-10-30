@@ -35,9 +35,9 @@ export class LoginComponent {
           console.log('Login successful', response);
           this.role = this.authService.currentUser()?.role;
           console.log(this.role);
-          if (this.role == 'ADMIN') {
+          if (this.role === 'ADMIN') {
             this.router.navigate(['/home']);
-          } else if (this.role == 'USER') {
+          } else if (this.role === 'USER') {
             this.router.navigate(['/products']);
           }
         },
@@ -47,8 +47,9 @@ export class LoginComponent {
         }
       );
     } else {
-      console.log('Form is invalid'); // Debugging: log form invalidity
+      console.log('Form is invalid');
     }
   }
+
 
 }

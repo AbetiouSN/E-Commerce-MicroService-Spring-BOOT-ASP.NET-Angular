@@ -12,7 +12,7 @@ export class AuthService {
   user: User | undefined;
   headers: HttpHeaders = new HttpHeaders();
   token: string = '';
-  private apiUrl = 'http://localhost:8080/api/v1/auth';
+  private apiUrl = 'http://localhost:8090/api/v1/auth';
 
   constructor(private http: HttpClient) {
      this.headers=this.getHeaders();
@@ -68,19 +68,21 @@ export class AuthService {
   }
 
   currentUser(): User | null {
-    if (this.getToken()) {
-      const tokenPayload: any = jwtDecode(this.getToken());
-      if (tokenPayload) {
+    const token = this.getToken();
+    if (token) {
+      const tokenPayload: any = jwtDecode(token);
+      if (tokenPayload && tokenPayload.roles && tokenPayload.roles.length > 0) {
         const user: User = {
-          role: tokenPayload.role[0].authority,
+          role: tokenPayload.roles[0], // Access the first role directly
           email: tokenPayload.sub,
-          password: ''
+          password: '' // Not storing password here
         };
         return user;
       }
     }
     return null;
   }
+
 
   autoLogout(dateExpiration: number): void {
     setTimeout(() => {

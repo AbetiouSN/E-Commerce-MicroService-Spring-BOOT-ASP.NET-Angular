@@ -49,25 +49,39 @@ public class JwtService {
 //                .compact();
 //    }
 
+//    public String generateToken(UserDetails userDetails) {
+//        // Extract roles from UserDetails and convert to a list of strings
+//        List<String> roles = userDetails.getAuthorities().stream()
+//                .map(GrantedAuthority::getAuthority)
+//                .collect(Collectors.toList());
+//
+//        return Jwts.builder()
+//                .setIssuer("http://localhost:8090")
+//                .setAudience("product-service") // Explicitly set the audience here
+//                .claim("roles", roles) // Set roles as a separate claim
+//                .setSubject(userDetails.getUsername())
+//                .setIssuedAt(new Date(System.currentTimeMillis()))
+//                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
+//                .signWith(getSignInKey(), SignatureAlgorithm.HS256)
+//                .compact();
+//    }
+//
+
     public String generateToken(UserDetails userDetails) {
-        // Extract roles from UserDetails and convert to a list of strings
         List<String> roles = userDetails.getAuthorities().stream()
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
         return Jwts.builder()
                 .setIssuer("http://localhost:8090")
-                .setAudience("product-service") // Explicitly set the audience here
-                .claim("roles", roles) // Set roles as a separate claim
+                .setAudience("product-service")
+                .claim("roles", roles) // Set roles as a list of strings
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
-                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10)) // 10 hours
+                .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))
                 .signWith(getSignInKey(), SignatureAlgorithm.HS256)
                 .compact();
     }
-
-
-
 
     public String generateToken(Map<String,Object> extraClaims, UserDetails userDetails){
         return Jwts.builder()
