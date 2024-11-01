@@ -18,7 +18,7 @@ namespace ProductManagemntService.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(ProductCreateDto productCreateDto)
         {
@@ -45,7 +45,7 @@ namespace ProductManagemntService.Controllers
         }
 
 
-        [Authorize(Roles = "ADMIN")]
+        [Authorize(Roles = "ADMIN,USER")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
@@ -56,7 +56,7 @@ namespace ProductManagemntService.Controllers
             return Ok(products);
         }
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpPost("{productId}/images")]
         public async Task<IActionResult> AddImagesToProduct(int productId, [FromBody] List<string> images)
         {
@@ -85,7 +85,7 @@ namespace ProductManagemntService.Controllers
 
 
 
-
+        [Authorize(Roles = "USER")]
         [HttpPut("{id}")]
         public async Task<ActionResult<Product>> UpdateProduct(int id, ProductCreateDto productUpdateDto)
         {
@@ -93,7 +93,6 @@ namespace ProductManagemntService.Controllers
             {
                 return BadRequest("Invalid product data.");
             }
-
             var product = await _context.Products
                 .Include(p => p.Images) // Include images to manage them if necessary
                 .FirstOrDefaultAsync(p => p.Id == id);
@@ -120,7 +119,7 @@ namespace ProductManagemntService.Controllers
         }
 
 
-
+        [Authorize(Roles = "ADMIN")]
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

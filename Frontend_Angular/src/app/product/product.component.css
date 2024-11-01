@@ -1,0 +1,21 @@
+.relative {
+  position: relative;
+}
+
+.absolute {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: rgba(0, 0, 0, 0.5);
+  padding: 0.5rem;
+}
+
+.flex.overflow-x-auto {
+  overflow-x: auto; /* Active le défilement horizontal */
+  white-space: nowrap; /* Évite que les images se plient sur plusieurs lignes */
+}
+
+.flex img {
+  cursor: pointer; /* Change le curseur sur les images pour indiquer qu'elles sont cliquables */
+}
