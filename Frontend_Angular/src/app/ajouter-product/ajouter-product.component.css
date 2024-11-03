@@ -1,0 +1,23 @@
+/* Optional: Add this to your component's CSS file for custom styling */
+.fixed {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.5); /* Dark semi-transparent background */
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  position: fixed;
+  z-index: 50; /* Ensure it stays on top */
+}
+
+.bg-white {
+  background-color: #ffffff;
+  border-radius: 8px;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  max-width: 500px;
+  width: 100%;
+  padding: 20px;
+  position: relative; /* For the content inside */
+}

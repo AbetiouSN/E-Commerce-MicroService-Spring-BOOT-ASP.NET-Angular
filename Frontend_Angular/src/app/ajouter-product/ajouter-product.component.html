@@ -1,62 +1,196 @@
+<!--&lt;!&ndash;&lt;!&ndash; ajouter-product.component.html &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="container mx-auto px-4">&ndash;&gt;-->
+<!--&lt;!&ndash;<h2 class="text-2xl font-bold mb-6">Ajouter un Nouveau Produit</h2>&ndash;&gt;-->
+<!--&lt;!&ndash;<form [formGroup]="pForm" (ngSubmit)="onSubmit()" class="space-y-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="nom" class="block text-sm font-medium text-gray-700">Nom du Produit</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input&ndash;&gt;-->
+<!--&lt;!&ndash;      id="nom"&ndash;&gt;-->
+<!--&lt;!&ndash;      formControlName="nom"&ndash;&gt;-->
+<!--&lt;!&ndash;      type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;      placeholder="Nom du produit"&ndash;&gt;-->
+<!--&lt;!&ndash;      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="pForm.get('nom')?.invalid && pForm.get('nom')?.touched" class="text-red-500 text-sm">&ndash;&gt;-->
+<!--&lt;!&ndash;      <small>Le nom est requis.</small>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <textarea&ndash;&gt;-->
+<!--&lt;!&ndash;      id="description"&ndash;&gt;-->
+<!--&lt;!&ndash;      formControlName="description"&ndash;&gt;-->
+<!--&lt;!&ndash;      placeholder="Description du produit"&ndash;&gt;-->
+<!--&lt;!&ndash;      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="pForm.get('description')?.invalid && pForm.get('description')?.touched" class="text-red-500 text-sm">&ndash;&gt;-->
+<!--&lt;!&ndash;      <small>La description est requise.</small>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input&ndash;&gt;-->
+<!--&lt;!&ndash;      id="quantity"&ndash;&gt;-->
+<!--&lt;!&ndash;      formControlName="quantity"&ndash;&gt;-->
+<!--&lt;!&ndash;      type="number"&ndash;&gt;-->
+<!--&lt;!&ndash;      placeholder="Quantité"&ndash;&gt;-->
+<!--&lt;!&ndash;      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="pForm.get('quantity')?.invalid && pForm.get('quantity')?.touched" class="text-red-500 text-sm">&ndash;&gt;-->
+<!--&lt;!&ndash;      <small>La quantité est requise.</small>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <div>&ndash;&gt;-->
+<!--&lt;!&ndash;    <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>&ndash;&gt;-->
+<!--&lt;!&ndash;    <input&ndash;&gt;-->
+<!--&lt;!&ndash;      id="prix"&ndash;&gt;-->
+<!--&lt;!&ndash;      formControlName="prix"&ndash;&gt;-->
+<!--&lt;!&ndash;      type="number"&ndash;&gt;-->
+<!--&lt;!&ndash;      placeholder="Prix"&ndash;&gt;-->
+<!--&lt;!&ndash;      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />&ndash;&gt;-->
+<!--&lt;!&ndash;    <div *ngIf="pForm.get('prix')?.invalid && pForm.get('prix')?.touched" class="text-red-500 text-sm">&ndash;&gt;-->
+<!--&lt;!&ndash;      <small>Le prix est requis.</small>&ndash;&gt;-->
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+<!--&lt;!&ndash;  </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <button&ndash;&gt;-->
+<!--&lt;!&ndash;    type="submit"&ndash;&gt;-->
+<!--&lt;!&ndash;    [disabled]="pForm.invalid"&ndash;&gt;-->
+<!--&lt;!&ndash;    class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition duration-300">&ndash;&gt;-->
+<!--&lt;!&ndash;    Enregistrer le Produit&ndash;&gt;-->
+<!--&lt;!&ndash;  </button>&ndash;&gt;-->
+<!--&lt;!&ndash;</form>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+<!--&lt;!&ndash; ajouter-product.component.html &ndash;&gt;-->
+<!--<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">-->
+<!--  <div class="bg-white rounded-lg shadow-lg w-full max-w-md p-6 relative">-->
+<!--    <h2 class="text-2xl font-bold mb-6">Ajouter un Nouveau Produit</h2>-->
+<!--    <form [formGroup]="pForm" (ngSubmit)="onSubmit()" class="space-y-4">-->
+
+<!--      <div>-->
+<!--        <label for="nom" class="block text-sm font-medium text-gray-700">Nom du Produit</label>-->
+<!--        <input-->
+<!--          id="nom"-->
+<!--          formControlName="nom"-->
+<!--          type="text"-->
+<!--          placeholder="Nom du produit"-->
+<!--          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />-->
+<!--        <div *ngIf="pForm.get('nom')?.invalid && pForm.get('nom')?.touched" class="text-red-500 text-sm">-->
+<!--          <small>Le nom est requis.</small>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>-->
+<!--        <textarea-->
+<!--          id="description"-->
+<!--          formControlName="description"-->
+<!--          placeholder="Description du produit"-->
+<!--          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>-->
+<!--        <div *ngIf="pForm.get('description')?.invalid && pForm.get('description')?.touched" class="text-red-500 text-sm">-->
+<!--          <small>La description est requise.</small>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>-->
+<!--        <input-->
+<!--          id="quantity"-->
+<!--          formControlName="quantity"-->
+<!--          type="number"-->
+<!--          placeholder="Quantité"-->
+<!--          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />-->
+<!--        <div *ngIf="pForm.get('quantity')?.invalid && pForm.get('quantity')?.touched" class="text-red-500 text-sm">-->
+<!--          <small>La quantité est requise.</small>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <div>-->
+<!--        <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>-->
+<!--        <input-->
+<!--          id="prix"-->
+<!--          formControlName="prix"-->
+<!--          type="number"-->
+<!--          placeholder="Prix"-->
+<!--          class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />-->
+<!--        <div *ngIf="pForm.get('prix')?.invalid && pForm.get('prix')?.touched" class="text-red-500 text-sm">-->
+<!--          <small>Le prix est requis.</small>-->
+<!--        </div>-->
+<!--      </div>-->
+
+<!--      <button-->
+<!--        type="submit"-->
+<!--        [disabled]="pForm.invalid"-->
+<!--        class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition duration-300">-->
+<!--        Enregistrer le Produit-->
+<!--      </button>-->
+<!--    </form>-->
+<!--  </div>-->
+<!--</div>-->
 <!-- ajouter-product.component.html -->
-<h2 class="text-2xl font-bold mb-6">Ajouter un Nouveau Produit</h2>
-<form [formGroup]="pForm" (ngSubmit)="onSubmit()" class="space-y-4">
+<div class="fixed inset-0 bg-black bg-opacity-50 flex justify-center items-center z-50">
+  <div class="bg-white rounded-lg shadow-lg w-full max-w-3xl p-8 relative">
+    <h2 class="text-3xl font-bold mb-8">Ajouter un Nouveau Produit</h2>
+    <form [formGroup]="pForm" (ngSubmit)="onSubmit()" class="space-y-6">
 
-  <div>
-    <label for="nom" class="block text-sm font-medium text-gray-700">Nom du Produit</label>
-    <input
-      id="nom"
-      formControlName="nom"
-      type="text"
-      placeholder="Nom du produit"
-      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-    <div *ngIf="pForm.get('nom')?.invalid && pForm.get('nom')?.touched" class="text-red-500 text-sm">
-      <small>Le nom est requis.</small>
-    </div>
+      <div>
+        <label for="nom" class="block text-sm font-medium text-gray-700">Nom du Produit</label>
+        <input
+          id="nom"
+          formControlName="nom"
+          type="text"
+          placeholder="Nom du produit"
+          class="mt-1 block w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300" />
+        <div *ngIf="pForm.get('nom')?.invalid && pForm.get('nom')?.touched" class="text-red-500 text-sm">
+          <small>Le nom est requis.</small>
+        </div>
+      </div>
+
+      <div>
+        <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
+        <textarea
+          id="description"
+          formControlName="description"
+          placeholder="Description du produit"
+          class="mt-1 block w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300"></textarea>
+        <div *ngIf="pForm.get('description')?.invalid && pForm.get('description')?.touched" class="text-red-500 text-sm">
+          <small>La description est requise.</small>
+        </div>
+      </div>
+
+      <div>
+        <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>
+        <input
+          id="quantity"
+          formControlName="quantity"
+          type="number"
+          placeholder="Quantité"
+          class="mt-1 block w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300" />
+        <div *ngIf="pForm.get('quantity')?.invalid && pForm.get('quantity')?.touched" class="text-red-500 text-sm">
+          <small>La quantité est requise.</small>
+        </div>
+      </div>
+
+      <div>
+        <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>
+        <input
+          id="prix"
+          formControlName="prix"
+          type="number"
+          placeholder="Prix"
+          class="mt-1 block w-full border border-gray-300 rounded-lg px-4 py-2 focus:border-blue-500 focus:ring-2 focus:ring-blue-500 transition duration-300" />
+        <div *ngIf="pForm.get('prix')?.invalid && pForm.get('prix')?.touched" class="text-red-500 text-sm">
+          <small>Le prix est requis.</small>
+        </div>
+      </div>
+
+      <button
+        type="submit"
+        [disabled]="pForm.invalid"
+        class="w-full bg-blue-500 text-white font-bold py-3 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition duration-300">
+        Enregistrer le Produit
+      </button>
+    </form>
   </div>
-
-  <div>
-    <label for="description" class="block text-sm font-medium text-gray-700">Description</label>
-    <textarea
-      id="description"
-      formControlName="description"
-      placeholder="Description du produit"
-      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500"></textarea>
-    <div *ngIf="pForm.get('description')?.invalid && pForm.get('description')?.touched" class="text-red-500 text-sm">
-      <small>La description est requise.</small>
-    </div>
-  </div>
-
-  <div>
-    <label for="quantity" class="block text-sm font-medium text-gray-700">Quantité</label>
-    <input
-      id="quantity"
-      formControlName="quantity"
-      type="number"
-      placeholder="Quantité"
-      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-    <div *ngIf="pForm.get('quantity')?.invalid && pForm.get('quantity')?.touched" class="text-red-500 text-sm">
-      <small>La quantité est requise.</small>
-    </div>
-  </div>
-
-  <div>
-    <label for="prix" class="block text-sm font-medium text-gray-700">Prix</label>
-    <input
-      id="prix"
-      formControlName="prix"
-      type="number"
-      placeholder="Prix"
-      class="mt-1 block w-full border-gray-300 rounded-md shadow-sm focus:border-indigo-500 focus:ring-indigo-500" />
-    <div *ngIf="pForm.get('prix')?.invalid && pForm.get('prix')?.touched" class="text-red-500 text-sm">
-      <small>Le prix est requis.</small>
-    </div>
-  </div>
-
-  <button
-    type="submit"
-    [disabled]="pForm.invalid"
-    class="w-full bg-blue-500 text-white font-bold py-2 rounded-md hover:bg-blue-600 disabled:bg-gray-400 transition duration-300">
-    Enregistrer le Produit
-  </button>
-</form>
+</div>

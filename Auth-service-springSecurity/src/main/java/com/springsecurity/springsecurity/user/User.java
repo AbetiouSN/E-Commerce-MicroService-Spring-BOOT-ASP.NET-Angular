@@ -1,11 +1,13 @@
 package com.springsecurity.springsecurity.user;
 
+import com.springsecurity.springsecurity.Entity.Cart;
 import jakarta.persistence.*;
 import lombok.*;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
@@ -22,6 +24,10 @@ public class User implements UserDetails {
     private Integer id;
     private String email;
     private String password;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL, orphanRemoval = true)
+    private List<Cart> carts = new ArrayList<>();
+
     @Getter
     @Enumerated(EnumType.STRING)
     private Role role;

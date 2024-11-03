@@ -13,6 +13,7 @@ export class AuthService {
   headers: HttpHeaders = new HttpHeaders();
   token: string = '';
   private apiUrl = 'http://localhost:8090/api/v1/auth';
+  private userid = 'http://localhost:8090/api/v1/auth/userId';
 
   constructor(private http: HttpClient) {
      this.headers=this.getHeaders();
@@ -22,6 +23,10 @@ export class AuthService {
 
   registerClient(customer: Customer): Observable<Customer> {
     return this.http.post<Customer>(`${this.apiUrl}/register-client`, customer);
+  }
+
+  userId(): Observable<number> {
+    return this.http.get<number>(`${this.userid}`, { headers: this.getHeaders() });
   }
 
 

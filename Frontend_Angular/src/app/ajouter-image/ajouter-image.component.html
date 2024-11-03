@@ -1,35 +1,68 @@
-<h2 class="text-2xl font-bold mb-4">Ajouter des Images au Produit</h2>
+<!--<h2 class="text-2xl font-bold mb-4">Ajouter des Images au Produit</h2>-->
 
-<div class="space-y-4">
-  <div *ngFor="let section of sections; let i = index" class="flex flex-col">
-    <label class="font-semibold">Image {{ i + 1 }}</label>
-    <input
-      type="file"
-      (change)="onImageUpload($event, i)"
-      accept="image/*"
-      class="border border-gray-300 rounded p-2 mb-2"
-    />
-<!--    <div *ngIf="section.source" class="mt-2">-->
-<!--      <img-->
-<!--        [src]="getImage(section.source)"-->
-<!--        alt="Preview"-->
-<!--        class="w-24 h-24 object-cover border border-gray-200 rounded"-->
-<!--      />-->
-<!--    </div>-->
+<!--<div class="space-y-4">-->
+<!--  <div *ngFor="let section of sections; let i = index" class="flex flex-col">-->
+<!--    <label class="font-semibold">Image {{ i + 1 }}</label>-->
+<!--    <input-->
+<!--      type="file"-->
+<!--      (change)="onImageUpload($event, i)"-->
+<!--      accept="image/*"-->
+<!--      class="border border-gray-300 rounded p-2 mb-2"-->
+<!--    />-->
+
+<!--  </div>-->
+<!--</div>-->
+
+<!--<div class="mt-4">-->
+<!--  <button-->
+<!--    (click)="submitAndAddImage()"-->
+<!--    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"-->
+<!--  >-->
+<!--    Ajouter une Autre Image-->
+<!--  </button>-->
+<!--  <button-->
+<!--    (click)="onSubmit()"-->
+<!--    class="ml-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200"-->
+<!--  >-->
+<!--    Soumettre les Images-->
+<!--  </button>-->
+<!--</div>-->
+<div
+  class="fixed inset-0 flex items-center justify-center bg-gray-800 bg-opacity-50"
+>
+  <div
+    class="bg-white rounded-lg shadow-lg p-6 w-full max-w-3xl space-y-6"
+  >
+    <h2 class="text-2xl font-bold mb-4">Ajouter des Images au Produit</h2>
+
+    <div class="space-y-4">
+      <div
+        *ngFor="let section of sections; let i = index"
+        class="flex flex-col space-y-2"
+      >
+        <label class="font-semibold text-gray-700">Image {{ i + 1 }}</label>
+        <input
+          type="file"
+          (change)="onImageUpload($event, i)"
+          accept="image/*"
+          class="border border-gray-300 rounded-md px-4 py-2 shadow-sm focus:border-indigo-500 focus:ring-2 focus:ring-indigo-500 transition duration-300"
+        />
+      </div>
+    </div>
+
+    <div class="mt-4 flex space-x-4">
+      <button
+        (click)="submitAndAddImage()"
+        class="bg-blue-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-blue-600 transition duration-300"
+      >
+        Ajouter une Autre Image
+      </button>
+      <button
+        (click)="onSubmit()"
+        class="bg-green-500 text-white font-semibold py-2 px-4 rounded-md hover:bg-green-600 transition duration-300"
+      >
+        Soumettre les Images
+      </button>
+    </div>
   </div>
-</div>
-
-<div class="mt-4">
-  <button
-    (click)="submitAndAddImage()"
-    class="bg-blue-500 text-white py-2 px-4 rounded hover:bg-blue-600 transition duration-200"
-  >
-    Ajouter une Autre Image
-  </button>
-  <button
-    (click)="onSubmit()"
-    class="ml-2 bg-green-500 text-white py-2 px-4 rounded hover:bg-green-600 transition duration-200"
-  >
-    Soumettre les Images
-  </button>
 </div>

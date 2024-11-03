@@ -8,6 +8,7 @@ import {RegisterComponent} from "./register/register.component";
 import {HomeComponent} from "./home/home.component";
 import {NavbarUserComponent} from "./navbar-user/navbar-user.component";
 import {FooterComponent} from "./footer/footer.component";
+import {CartComponent} from "./cart/cart.component";
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -19,7 +20,7 @@ const routes: Routes = [
   { path: 'products', component: ProductComponent },
   { path: 'ajouterProduct', component: AjouterProductComponent},
   { path: 'ajouterimage/:id', component: AjouterImageComponent},
-
+  { path: 'carts/:id' , component: CartComponent},
 
 ];
 

@@ -1,5 +1,6 @@
 package com.springsecurity.springsecurity.config;
 
+import com.springsecurity.springsecurity.user.User;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -26,6 +27,11 @@ public class JwtService {
         final  Claims claims = extractAllClaims(token);
         return claimsResolver.apply(claims);
     }
+
+    public Integer extractUserId(String token) {
+        return extractClaim(token, claims -> claims.get("id", Integer.class)); // assuming the id is stored as a claim
+    }
+
 
 
     //hadi d rihab
@@ -72,10 +78,13 @@ public class JwtService {
                 .map(GrantedAuthority::getAuthority)
                 .collect(Collectors.toList());
 
+        Integer userId = ((User) userDetails).getId();
+
         return Jwts.builder()
                 .setIssuer("http://localhost:8090")
                 .setAudience("product-service")
                 .claim("roles", roles) // Set roles as a list of strings
+                .claim("id", userId) // Set user ID here // Ajouter l'ID de l'utilisateur
                 .setSubject(userDetails.getUsername())
                 .setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis() + 1000 * 60 * 60 * 10))

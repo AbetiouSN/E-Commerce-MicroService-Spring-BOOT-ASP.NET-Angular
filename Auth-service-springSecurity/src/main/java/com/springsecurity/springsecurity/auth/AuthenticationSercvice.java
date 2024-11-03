@@ -19,6 +19,8 @@ public class AuthenticationSercvice {
     private  final CustomerRepository customerRepository;
     private final UserRepository userRepository;
 
+
+
     public AuthenticationResponse register(RegisterRequest request) {
       var user = User.builder()
               .email(request.getEmail())

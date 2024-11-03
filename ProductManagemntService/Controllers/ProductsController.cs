@@ -18,7 +18,7 @@ namespace ProductManagemntService.Controllers
         {
             _context = context;
         }
-        [Authorize(Roles = "ADMIN,USER")]
+        [Authorize(Roles = "ADMIN")]
         [HttpPost]
         public async Task<ActionResult<Product>> CreateProduct(ProductCreateDto productCreateDto)
         {

@@ -13,6 +13,7 @@ import { HomeComponent } from './home/home.component';
 import { NavbarUserComponent } from './navbar-user/navbar-user.component';
 import { FooterComponent } from './footer/footer.component';
 import {HttpClientModule} from "@angular/common/http";
+import { CartComponent } from './cart/cart.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import {HttpClientModule} from "@angular/common/http";
     LoginComponent,
     HomeComponent,
     NavbarUserComponent,
-    FooterComponent
+    FooterComponent,
+    CartComponent
   ],
   imports: [
     BrowserModule,

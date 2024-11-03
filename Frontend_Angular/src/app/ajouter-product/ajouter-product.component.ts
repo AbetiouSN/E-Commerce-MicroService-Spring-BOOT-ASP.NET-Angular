@@ -25,6 +25,7 @@ export class AjouterProductComponent {
     });
   }
 
+
   onSubmit(): void {
     if (this.pForm.invalid) {
       return; // Do not proceed if the form is invalid
